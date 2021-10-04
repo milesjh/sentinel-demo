@@ -64,5 +64,5 @@ main = rule {
 	no_tfe_team_members and
 	no_tfe_team_token and
 	#no_tfe_variable and
-	no_tfe_workspace
+	#no_tfe_workspace
 }
