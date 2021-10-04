@@ -3,6 +3,12 @@ terraform {
     hostname     = "app.terraform.io"
     organization = "mjh-demo"
   }
+  required_providers {
+    tfe = {
+      source  = "hashicorp/tfe"
+      version = "~> 0.26.0"
+    }
+  }
 }
 
 variable "tfe_token" {}
@@ -28,7 +34,6 @@ variable "use_case_name" {
 provider "tfe" {
   hostname = var.tfe_hostname
   token    = var.tfe_token
-  version  = "~> 0.26.0"
 }
 
 data "tfe_workspace_ids" "all" {
