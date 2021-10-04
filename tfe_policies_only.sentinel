@@ -59,7 +59,7 @@ main = rule {
 	no_tfe_organization_token and
 	no_tfe_ssh_key and
 	#no_tfe_team and
-	no_tfe_team_access and
+	#no_tfe_team_access and
 	no_tfe_team_member and
 	no_tfe_team_members and
 	no_tfe_team_token and
