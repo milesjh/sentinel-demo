@@ -58,62 +58,62 @@ resource "tfe_policy_set" "global" {
   ]
 }
 
-resource "tfe_policy_set" "production" {
-  name         = "production"
-  description  = "Policies that should be enforced on production infrastructure."
-  organization = var.tfe_organization
+# resource "tfe_policy_set" "production" {
+#   name         = "production"
+#   description  = "Policies that should be enforced on production infrastructure."
+#   organization = var.tfe_organization
 
-  policy_ids = [
-    "${tfe_sentinel_policy.aws-restrict-instance-type-prod.id}",
-    #"${tfe_sentinel_policy.prod-change-window-hours.id}",
-  ]
+#   policy_ids = [
+#     "${tfe_sentinel_policy.aws-restrict-instance-type-prod.id}",
+#     #"${tfe_sentinel_policy.prod-change-window-hours.id}",
+#   ]
 
-  workspace_external_ids = [
-    "${local.workspaces["${var.use_case_name}-production"]}",
-  ]
-}
+#   workspace_ids = [
+#     "${local.workspaces["${var.use_case_name}-production"]}",
+#   ]
+# }
 
-resource "tfe_policy_set" "development" {
-  name         = "development"
-  description  = "Policies that should be enforced on development or scratch infrastructure."
-  organization = var.tfe_organization
+# resource "tfe_policy_set" "development" {
+#   name         = "development"
+#   description  = "Policies that should be enforced on development or scratch infrastructure."
+#   organization = var.tfe_organization
 
-  policy_ids = [
-    "${tfe_sentinel_policy.aws-restrict-instance-type-dev.id}",
-    "${tfe_sentinel_policy.allowed-working-hours.id}",
-  ]
+#   policy_ids = [
+#     "${tfe_sentinel_policy.aws-restrict-instance-type-dev.id}",
+#     "${tfe_sentinel_policy.allowed-working-hours.id}",
+#   ]
 
-  workspace_external_ids = [
-    "${local.workspaces["${var.use_case_name}-development"]}",
-  ]
-}
+#   workspace_ids = [
+#     "${local.workspaces["${var.use_case_name}-development"]}",
+#   ]
+# }
 
-resource "tfe_policy_set" "staging" {
-  name         = "staging"
-  description  = "Policies that should be enforced on staging environments."
-  organization = var.tfe_organization
+# resource "tfe_policy_set" "staging" {
+#   name         = "staging"
+#   description  = "Policies that should be enforced on staging environments."
+#   organization = var.tfe_organization
 
-  policy_ids = [
-    "${tfe_sentinel_policy.aws-restrict-instance-type-stage.id}",
-  ]
+#   policy_ids = [
+#     "${tfe_sentinel_policy.aws-restrict-instance-type-stage.id}",
+#   ]
 
-  workspace_external_ids = [
-    "${local.workspaces["${var.use_case_name}-staging"]}",
-  ]
-}
+#   workspace_ids = [
+#     "${local.workspaces["${var.use_case_name}-staging"]}",
+#   ]
+# }
 
 resource "tfe_policy_set" "sentinel" {
   name         = "sentinel"
   description  = "Policies that watch the watchman. Enforced only on the workspace that manages policies."
   organization = var.tfe_organization
-
+  global       = true
   policy_ids = [
     "${tfe_sentinel_policy.tfe_policies_only.id}",
   ]
 
-  workspace_external_ids = [
-    "${local.workspaces["${var.self_name}"]}",
-  ]
+  # workspace_ids = [
+  #   "${local.workspaces["${var.self_name}"]}",
+  # ]
 }
 
 # Test/experimental policies:
