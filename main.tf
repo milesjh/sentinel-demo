@@ -36,14 +36,14 @@ provider "tfe" {
   token    = var.tfe_token
 }
 
-data "tfe_workspace_ids" "all" {
-  names        = ["*"]
-  organization = var.tfe_organization
-}
+# data "tfe_workspace_ids" "all" {
+#   names        = ["*"]
+#   organization = var.tfe_organization
+# }
 
-locals {
-  workspaces = data.tfe_workspace_ids.all.external_ids # map of names to IDs
-}
+# locals {
+#   workspaces = data.tfe_workspace_ids.all.external_ids # map of names to IDs
+# }
 
 resource "tfe_policy_set" "global" {
   name         = "global"
