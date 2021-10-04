@@ -45,7 +45,7 @@ no_tfe_oauth_client = rule { length(get_resources("tfe_oauth_client")) == 0 }
 no_tfe_organization = rule { length(get_resources("tfe_organization")) == 0 }
 no_tfe_organization_token = rule { length(get_resources("tfe_organization_token")) == 0 }
 no_tfe_ssh_key = rule { length(get_resources("tfe_ssh_key")) == 0 }
-no_tfe_team = rule { length(get_resources("tfe_team")) == 0 }
+#no_tfe_team = rule { length(get_resources("tfe_team")) == 0 }
 no_tfe_team_access = rule { length(get_resources("tfe_team_access")) == 0 }
 no_tfe_team_member = rule { length(get_resources("tfe_team_member")) == 0 }
 no_tfe_team_members = rule { length(get_resources("tfe_team_members")) == 0 }
@@ -58,7 +58,7 @@ main = rule {
 	no_tfe_organization and
 	no_tfe_organization_token and
 	no_tfe_ssh_key and
-	no_tfe_team and
+	#no_tfe_team and
 	no_tfe_team_access and
 	no_tfe_team_member and
 	no_tfe_team_members and
